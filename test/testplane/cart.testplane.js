@@ -30,7 +30,7 @@ describe("Карточка товара: ", () => {
         .then((url) => url.split("/").pop());
 
       await browser.url(
-        `http://localhost:3000/hw/store/catalog/${productId}?bug_id=3`
+        `http://localhost:3000/hw/store/catalog/${productId}?bug_id=1`
       );
 
       await browser.waitUntil(

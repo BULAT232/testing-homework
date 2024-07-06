@@ -1,5 +1,4 @@
-const BASE_URL = "http://localhost:3000/hw/store";
-const BUG_ID = 2;
+import { BASE_URL, BUG_ID } from "./constans";
 
 const url = Boolean(BUG_ID)
   ? `${BASE_URL}/catalog?bug_id=${BUG_ID}`
