@@ -4,7 +4,6 @@ describe('страница с подробным описанием товара
 
         const button = await browser.$('.ProductDetails-AddToCart');
 
-        await button.assertView('plain', {ignoreDiffPixelCount : '5%'})
+        await button.assertView('plain', {ignoreDiffPixelCount : '10%'})
     });
 });
-

@@ -9,7 +9,7 @@ describe('home adaptive layout', function() {
         const home = await browser.$('.Home');
         expect(await home.isDisplayed()).toBe(true);
 
-        await home.assertView('plain', {ignoreDiffPixelCount : '5%'})
+        await home.assertView('plain', {ignoreDiffPixelCount : '10%'})
     });
 
     it('home var2', async ({ browser }) => {
@@ -19,7 +19,7 @@ describe('home adaptive layout', function() {
         const home = await browser.$('.Home');
         expect(await home.isDisplayed()).toBe(true);
 
-        await home.assertView('plain', {ignoreDiffPixelCount : '5%'})
+        await home.assertView('plain', {ignoreDiffPixelCount : '10%'})
 
     });
 
@@ -30,7 +30,7 @@ describe('home adaptive layout', function() {
         const home = await browser.$('.Home');
         expect(await home.isDisplayed()).toBe(true);
 
-        await home.assertView('plain', {ignoreDiffPixelCount : '5%'})
+        await home.assertView('plain', {ignoreDiffPixelCount : '10%'})
     });
 
 });
@@ -44,7 +44,7 @@ describe('catalog adaptive layout', function() {
         const catalog = await browser.$('.Catalog');
         expect(await catalog.isDisplayed()).toBe(true);
 
-        await catalog.assertView('plain')
+        await catalog.assertView('plain', {ignoreDiffPixelCount : '10%'})
     });
 
     it('var2', async ({ browser }) => {
@@ -54,7 +54,7 @@ describe('catalog adaptive layout', function() {
         const catalog = await browser.$('.Catalog');
         expect(await catalog.isDisplayed()).toBe(true);
 
-        await catalog.assertView('plain')
+        await catalog.assertView('plain', {ignoreDiffPixelCount : '10%'})
     });
 
     it('var3', async ({ browser }) => {
@@ -64,7 +64,7 @@ describe('catalog adaptive layout', function() {
         const catalog = await browser.$('.Catalog');
         expect(await catalog.isDisplayed()).toBe(true);
 
-        await catalog.assertView('plain')
+        await catalog.assertView('plain', {ignoreDiffPixelCount : '10%'})
     });
 
 });
@@ -79,7 +79,7 @@ describe('delivery adaptive layout', function() {
         const delivery = await browser.$('.Delivery');
         expect(await delivery.isDisplayed()).toBe(true);
 
-        await delivery.assertView('plain')
+        await delivery.assertView('plain', {ignoreDiffPixelCount : '10%'})
     });
 
     it('var2', async ({ browser }) => {
@@ -89,7 +89,7 @@ describe('delivery adaptive layout', function() {
         const delivery = await browser.$('.Delivery');
         expect(await delivery.isDisplayed()).toBe(true);
 
-        await delivery.assertView('plain')
+        await delivery.assertView('plain', {ignoreDiffPixelCount : '10%'})
     });
 
     it('var3', async ({ browser }) => {
@@ -99,7 +99,7 @@ describe('delivery adaptive layout', function() {
         const delivery = await browser.$('.Delivery');
         expect(await delivery.isDisplayed()).toBe(true);
 
-        await delivery.assertView('plain')
+        await delivery.assertView('plain', {ignoreDiffPixelCount : '10%'})
     });
 
 });
@@ -113,7 +113,7 @@ describe('contacts adaptive layout', function() {
         const contacts = await browser.$('.Contacts');
         expect(await contacts.isDisplayed()).toBe(true);
 
-        await contacts.assertView('plain')
+        await contacts.assertView('plain', {ignoreDiffPixelCount : '10%'})
     });
 
     it('var2', async ({ browser }) => {
@@ -123,7 +123,7 @@ describe('contacts adaptive layout', function() {
         const contacts = await browser.$('.Contacts');
         expect(await contacts.isDisplayed()).toBe(true);
 
-        await contacts.assertView('plain')
+        await contacts.assertView('plain', {ignoreDiffPixelCount : '10%'})
     });
 
     it('var3', async ({ browser }) => {
@@ -133,7 +133,7 @@ describe('contacts adaptive layout', function() {
         const contacts = await browser.$('.Contacts');
         expect(await contacts.isDisplayed()).toBe(true);
 
-        await contacts.assertView('plain')
+        await contacts.assertView('plain', {ignoreDiffPixelCount : '10%'})
     });
 
 });

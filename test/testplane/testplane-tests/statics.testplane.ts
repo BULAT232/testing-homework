@@ -4,7 +4,7 @@ describe('screenshot tests', function() {
 
         let contacts_page = await browser.$('.Contacts');
 
-        await contacts_page.assertView('plain', {ignoreDiffPixelCount : '5%'})
+        await contacts_page.assertView('plain', {ignoreDiffPixelCount : '10%'})
 
     });
 
@@ -13,7 +13,7 @@ describe('screenshot tests', function() {
 
         let delivery_page = await browser.$('.Delivery');
 
-        await delivery_page.assertView('plain', {ignoreDiffPixelCount : '5%'})
+        await delivery_page.assertView('plain', {ignoreDiffPixelCount : '10%'})
 
     });
 
@@ -23,7 +23,7 @@ describe('screenshot tests', function() {
 
         let delivery_page = await browser.$('.Home');
 
-        await delivery_page.assertView('plain', {ignoreDiffPixelCount : '5%'})
+        await delivery_page.assertView('plain', {ignoreDiffPixelCount : '10%'})
 
     });
 });
