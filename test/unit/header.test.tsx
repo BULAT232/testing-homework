@@ -1,58 +1,62 @@
-import React from "react";
+// @ts-ignore
+import React from 'react';
+import { render, screen} from '@testing-library/react';
+import {Provider} from "react-redux";
+import '@testing-library/jest-dom'
+import {Application} from "../../src/client/Application";
+import {BrowserRouter} from "react-router-dom";
+import {initStore} from "../../src/client/store";
+import {CartApi, ExampleApi} from "../../src/client/api";
+describe('шапка', () => {
+    const basename = "/hw/store"
+    const api = new ExampleApi(basename)
+    const cart = new CartApi()
+    const store = initStore(api, cart)
 
-import { render } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
-import { Provider } from "react-redux";
+    it('есть ссылки на старницы магазина', () => {
+
+        render(
+            <Provider store={store}>
+                <BrowserRouter>
+                    <Application/>
+                </BrowserRouter>
+            </Provider>
+        );
 
 
-import { ExampleApi, CartApi } from "../../src/client/api";
-import { initStore } from "../../src/client/store";
-import { Application } from "../../src/client/Application";
+        const linkCatalog = screen.getByRole('link', {name: 'Catalog'});
+        const linkDelivery = screen.getByRole('link', {name: 'Delivery'});
+        const linkContacts = screen.getByRole('link', {name: 'Contacts'});
+        const linkHome = screen.getByRole('link', {name: 'Kogtetochka store'});
+        const linkCart = screen.getByRole('link', {name: 'Cart'});
 
-
-// import { MemoryRouter } from "react-router-dom";
-// import { Provider } from 'react-redux';
-// import { initStore } from '../../src/store';  // Убедитесь, что путь правильный
-// import { CartApi } from '../../src/client/api';  // Убедитесь, что путь правильный
-// import Application from '../../src/cline/Application';  // Убедитесь, что путь правильный
-
-describe("Проверка header", () => {
-  const basename = "/hw/store";
-  const api = new ExampleApi(basename);
-  const cart = new CartApi();
-  const store = initStore(api, cart);
-
-
-  const application = (
-    <MemoryRouter initialEntries={[basename]}>
-      <Provider store={store}>
-        <Application />
-      </Provider>
-    </MemoryRouter>
-  );
-
-  it("Проверка ссылок", () => {
-    const { container } = render(application);
-    const links = container.querySelectorAll(".nav-link");
-
-    expect(links.length).toBe(4);
-
-    const linkTexts = ["Catalog", "Delivery", "Contacts", "Cart"];
-    links.forEach((link, index) => {
-      expect(link.textContent).toBe(linkTexts[index]);
+        expect(linkCatalog).toBeInTheDocument();
+        expect(linkDelivery).toBeInTheDocument();
+        expect(linkContacts).toBeInTheDocument();
+        expect(linkHome).toBeInTheDocument();
+        expect(linkCart).toBeInTheDocument();
     });
-  });
 
-  it("Проверка ссылки на главную", () => {
-    const { getByText } = render(application);
+    it('есть ссылка на корзину с количеством', () => {
+        const mockState = {
+            cart: [{name: 'Product 1', price: 100, count: 1},
+                {name: 'Product 2', price: 100, count: 1}]
+        };
 
-    const brandLink = getByText("Kogtetochka store");
-    expect(brandLink.closest("a")).not.toBeNull();
-    const brandAnchor = brandLink.closest("a");
-     if (brandAnchor) {
-       expect(brandAnchor.getAttribute("href")).toBe("/");
-     } else {
-       throw new Error("Brand link not found");
-     }
-  });
+        cart.setState(mockState.cart)
+        const store = initStore(api, cart)
+
+        const count = Object.keys(mockState.cart).length;
+
+        render(
+            <Provider store={store}>
+                <BrowserRouter>
+                    <Application/>
+                </BrowserRouter>
+            </Provider>
+        );
+
+        const linkCart = screen.getByRole('link', {name: `Cart (${count})`});
+        expect(linkCart).toBeInTheDocument();
+    });
 });

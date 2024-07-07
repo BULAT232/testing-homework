@@ -7,7 +7,9 @@ export default {
     resetCursor: false,
     sets: {
         desktop: {
-            files:  ['test/testplane/**/*.js'],
+            files: [
+                "test/testplane/testplane-tests/**/*.testplane.(t|j)s"
+            ],
             browsers: [
                 "chrome"
             ]
@@ -16,7 +18,7 @@ export default {
     browsers: {
         chrome: {
             automationProtocol: "devtools",
-            headless: false,
+            headless: true,
             desiredCapabilities: {
                 browserName: "chrome"
             }
